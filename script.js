@@ -1,15 +1,31 @@
-document.getElementById('spinBtn').addEventListener('click', () => {
-  const option1 = document.getElementById('option1').value.trim();
-  const option2 = document.getElementById('option2').value.trim();
-  const option3 = document.getElementById('option3').value.trim();
+let degree = 0;
 
-  const options = [option1, option2, option3].filter(opt => opt !== "");
+document.getElementById("spinBtn").addEventListener("click", () => {
+  const opt1 = document.getElementById("option1").value.trim() || "Option 1";
+  const opt2 = document.getElementById("option2").value.trim() || "Option 2";
+  const opt3 = document.getElementById("option3").value.trim() || "Option 3";
 
-  if (options.length < 2) {
-    document.getElementById('result').innerText = "Please enter at least 2 options.";
-    return;
-  }
+  // Set text in wheel
+  document.getElementById("opt1").innerText = opt1;
+  document.getElementById("opt2").innerText = opt2;
+  document.getElementById("opt3").innerText = opt3;
 
-  const selected = options[Math.floor(Math.random() * options.length)];
-  document.getElementById('result').innerText = `🎯 Selected: ${selected}`;
+  const spinner = document.getElementById("spinner");
+  
+  // Random spin between 3 and 6 full turns
+  const randomDeg = Math.floor(Math.random() * 360 + 1080);
+  degree += randomDeg;
+  spinner.style.transform = `rotate(${degree}deg)`;
+
+  // After spin, show result
+  setTimeout(() => {
+    const normalized = degree % 360;
+    let selected = "";
+
+    if (normalized >= 0 && normalized < 120) selected = opt1;
+    else if (normalized >= 120 && normalized < 240) selected = opt2;
+    else selected = opt3;
+
+    document.getElementById("result").innerText = `🎯 Selected: ${selected}`;
+  }, 4000); // same as transition duration
 });

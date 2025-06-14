@@ -2,16 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roulette Picker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Spinner</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Roulette Picker</h1>
-    <input type="text" id="option1" placeholder="Enter Option 1" />
-    <input type="text" id="option2" placeholder="Enter Option 2" />
-    <input type="text" id="option3" placeholder="Enter Option 3" />
+    <h1>Roulette Spinner</h1>
+    <div class="input-fields">
+      <input type="text" id="option1" placeholder="Enter Option 1" />
+      <input type="text" id="option2" placeholder="Enter Option 2" />
+      <input type="text" id="option3" placeholder="Enter Option 3" />
+    </div>
+
+    <div class="spinner-container">
+      <div class="arrow"></div>
+      <div class="spinner" id="spinner">
+        <div class="option option1" id="opt1">Option 1</div>
+        <div class="option option2" id="opt2">Option 2</div>
+        <div class="option option3" id="opt3">Option 3</div>
+      </div>
+    </div>
+
     <button id="spinBtn">Spin</button>
     <div id="result"></div>
   </div>
